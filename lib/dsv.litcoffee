@@ -1,7 +1,5 @@
 #DSV Parser
 
-    fs = require 'fs'
-
     QUOTE = '\"'.charCodeAt 0
     CR = '\r'.charCodeAt 0
     LF = '\n'.charCodeAt 0
@@ -81,4 +79,8 @@
 
 #Exports
 
-    module.exports = parse
+    if module?
+     module.exports = parse
+
+    if window?
+     window.dsv = parse
