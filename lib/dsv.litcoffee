@@ -82,5 +82,5 @@
     if module?
      module.exports = parse
 
-    if window?
-     window.dsv = parse
+    if window? or self?
+     @dsv = parse
