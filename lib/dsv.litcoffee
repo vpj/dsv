@@ -60,7 +60,7 @@
       #special case: last token before EOF
       return text.slice(j)
 
-     while (t = token())isnt EOF
+     while (t = token()) isnt EOF
       n = 0
       while t isnt EOL and t isnt EOF
        if columns.length is n
