@@ -1,6 +1,5 @@
 #DSV Parser
 
-    QUOTE = '\"'.charCodeAt 0
     CR = '\r'.charCodeAt 0
     LF = '\n'.charCodeAt 0
 
@@ -10,6 +9,10 @@
 
     parse = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
+     QUOTE = options.quote
+     if not QUOTE?
+      QUOTE =  '\"'.charCodeAt 0
+     console.log QUOTE
      text = options.text
      EOL = '\n' # sentinel value for end-of-line
      EOF = -1 # sentinel value for end-of-file
