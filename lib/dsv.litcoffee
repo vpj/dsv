@@ -65,12 +65,20 @@
 
      while (t = token()) isnt EOF
       n = 0
+      t2 = token()
+      #Skip empty rows
+      continue if t is '' and (t2 is EOL or t2 is EOF)
+
       while t isnt EOL and t isnt EOF
        if columns.length is n
         columns.push new Array rows
        columns[n].push t
        n++
-       t = token()
+       if t2?
+        t = t2
+        t2 = null
+       else
+        t = token()
       while n < columns.length
        columns[n].push undefined
        n++
