@@ -12,7 +12,6 @@
      QUOTE = options.quote
      if not QUOTE?
       QUOTE =  '\"'.charCodeAt 0
-     console.log QUOTE
      text = options.text
      EOL = '\n' # sentinel value for end-of-line
      EOF = -1 # sentinel value for end-of-file
