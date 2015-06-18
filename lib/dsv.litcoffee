@@ -42,6 +42,8 @@
         ++I if (text.charCodeAt i + 2) is LF
        else if c is LF
         eol = true
+       else if i + 1 < N and c isnt SEPARATOR
+        throw new Error "#{text.slice j, i + 10} DSV Quote error"
        return text.slice(j + 1, i).replace(/""/g, "\"")
 
       #common case: find next delimiter or newline
