@@ -21,7 +21,7 @@ Constants
 
 ##Parse
 
-##Parse String
+###Parse String
 
     parseString = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
@@ -126,7 +126,7 @@ Return columns
 
 
 
-##Parse Buffer
+###Parse Buffer
 
     parseBuffer = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
@@ -245,6 +245,13 @@ Return columns
 
 
 
+###Parse
+
+    parse = (options) ->
+     if options.text?
+      parseString options
+     else
+      parseBuffer options
 
 
 #Exports
