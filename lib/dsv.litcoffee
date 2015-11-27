@@ -12,10 +12,12 @@ Constants
     else
      TEXT_DECODER = null
 
-    if @Buffer
-     BUFFER = @Buffer
+    if Buffer?
+     BUFFER = Buffer
     else
      BUFFER = null
+
+    console.log BUFFER, TEXT_DECODER
 
 
 
@@ -134,7 +136,7 @@ Return columns
      if not QUOTE?
       QUOTE =  '\"'.charCodeAt 0
 
-     buffer = new options.buffer
+     buffer = options.buffer
      N = options.length
      I = 0 # current character index
      eol = false
