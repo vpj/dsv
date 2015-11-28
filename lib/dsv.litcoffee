@@ -142,13 +142,27 @@ Return columns
      eol = false
 
      if BUFFER?
-      _slice = (from, to) ->
+      _slice = (buf, from, to) ->
        return new Buffer 0 if from >= to
-       buffer.slice from, to
+       buf.slice from, to
      else
-      _slice = (from, to) ->
+      _slice = (buf, from, to) ->
        return new Uint8Array 0 if from >= to
-       new Uint8Array buffer, from, to - from
+       new Uint8Array buf, from, to - from
+
+     replaceQuote = (buf) ->
+      i = 0
+      j = 0
+      while i < buf.length
+       if buf[i] is QUOTE
+        if i + 1 < buf.length and buf[i + 1] is QUOTE
+         ++i
+       buf[j] = buf[i]
+       ++i
+       ++j
+
+      _slice buf, 0, j
+
 
 
 Get next token
@@ -178,9 +192,9 @@ Handle quotes
        else if c is LF
         eol = true
        else if i + 1 < N and c isnt SEPARATOR
-        throw new Error "#{_slice j, i + 10} DSV Quote error"
+        throw new Error "#{_slice buffer, j, i + 10} DSV Quote error"
 
-       return (_slice j + 1, i).replace /""/g, "\""
+       return replaceQuote _slice buffer, j + 1, i
 
 If not quote
 
@@ -196,11 +210,11 @@ If not quote
          ++k
        else if c isnt SEPARATOR
         continue
-       return _slice j, I - k
+       return _slice buffer, j, I - k
 
 Special case: last token before EOF
 
-      return _slice j, N
+      return _slice buffer, j, N
 
 
      rows = 0
