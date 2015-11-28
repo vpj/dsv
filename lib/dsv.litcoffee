@@ -141,18 +141,14 @@ Return columns
      I = 0 # current character index
      eol = false
 
-     if not TEXT_DECODER? and not BUFFER?
-      throw new Error "Cannot decode buffers"
-
-     if TEXT_DECODER?
+     if BUFFER?
       _slice = (from, to) ->
-       return '' if from >= to
-       TEXT_DECODER.decode new Uint8Array buffer, from, to - from
+       return new Buffer 0 if from >= to
+       buffer.slice from, to
      else
       _slice = (from, to) ->
-       return '' if from >= to
-       buffer.toString 'utf8', from, to
-
+       return new Uint8Array 0 if from >= to
+       new Uint8Array buffer, from, to - from
 
 
 Get next token
