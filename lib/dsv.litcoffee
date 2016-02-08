@@ -17,8 +17,6 @@ Constants
     else
      BUFFER = null
 
-    console.log BUFFER, TEXT_DECODER
-
 
 
 ##Parse
