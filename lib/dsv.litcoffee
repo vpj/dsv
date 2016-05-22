@@ -25,8 +25,9 @@ Constants
 
     parseString = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
-     QUOTE = options.quote
-     if not QUOTE?
+     if options.quote?
+      QUOTE = options.quote.charCodeAt 0
+     else
       QUOTE =  '\"'.charCodeAt 0
 
      text = options.text
@@ -130,8 +131,9 @@ Return columns
 
     parseBuffer = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
-     QUOTE = options.quote
-     if not QUOTE?
+     if options.quote?
+      QUOTE = options.quote.charCodeAt 0
+     else
       QUOTE =  '\"'.charCodeAt 0
 
      buffer = options.buffer
