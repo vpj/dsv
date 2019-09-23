@@ -1,4 +1,4 @@
-#DSV Parser
+# DSV Parser
 
 Constants
 
@@ -19,9 +19,9 @@ Constants
 
 
 
-##Parse
+## Parse
 
-###Parse String
+### Parse String
 
     parseString = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
@@ -127,7 +127,7 @@ Return columns
 
 
 
-###Parse Buffer
+### Parse Buffer
 
     parseBuffer = (options) ->
      SEPARATOR = options.separator.charCodeAt 0
@@ -257,7 +257,7 @@ Return columns
 
 
 
-###Parse
+### Parse
 
     parse = (options) ->
      if options.text?
@@ -266,7 +266,7 @@ Return columns
       parseBuffer options
 
 
-#Exports
+# Exports
 
     if module?
      module.exports = parse
